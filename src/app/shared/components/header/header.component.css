@@ -1,0 +1,10 @@
+.header {
+    background: var(--blue);
+    display: flex;    
+    padding: 1rem 0;
+    height: 5rem;
+}
+
+.logo {
+    margin-left: 5rem;
+}
