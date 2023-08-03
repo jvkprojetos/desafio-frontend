@@ -13,7 +13,8 @@ import { SearchComponent } from './components/search/search.component';
     CommonModule,
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    SearchComponent
   ]
 })
 

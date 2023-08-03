@@ -1,4 +1,4 @@
 <div class="container">
-    <input class="input" placeholder="Pesquisar" />
-    <button class="button material-symbols-outlined icon">Search</button>
+    <input #filter class="input" placeholder="Pesquisar"/>
+    <button class="button material-symbols-outlined icon" (click)="searchClick(filter.value)">Search</button>
 </div>
