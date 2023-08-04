@@ -1,1 +1,9 @@
 <app-search (onClick)="search($event)"></app-search>
+<h1 class="title">Mais Populares</h1>
+<div class="content">
+    <div class="card" *ngFor="let snippet of mostPopularVideos">
+        <img class="card-image " src="{{snippet.thumbnails.maxres.url}}"/>
+        <h1 class="card-title">{{snippet.title}}</h1>
+        <h1 class="card-channel">{{snippet.channelTitle}}</h1>
+    </div> 
+</div>

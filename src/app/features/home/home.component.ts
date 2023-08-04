@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Snippet, Video } from 'src/app/core/models/video';
+import { VideoApiService } from 'src/app/core/services/video-api.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  mostPopularVideos: Array<Snippet> = [];
+
+  constructor(private videoApiService: VideoApiService) { }
 
   ngOnInit(): void {
+    this.videoApiService.getMostPopular().subscribe((items) => {
+      items.items?.forEach((item) => {
+        if(item.snippet)
+          this.mostPopularVideos.push(item.snippet);
+      })
+    });
   }
 
   search(value: string) {
