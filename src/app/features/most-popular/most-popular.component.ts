@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Snippet } from 'src/app/core/models/Snippet';
-import { VideoApiService } from 'src/app/core/services/video-api.service';
+import { Store } from '@ngrx/store';
+import { loadMostPopularVideo } from 'src/app/core/store/app.actions';
+import { State } from 'src/app/core/store/app.reducer';
 
 @Component({
   selector: 'app-most-popular',
@@ -8,18 +9,11 @@ import { VideoApiService } from 'src/app/core/services/video-api.service';
   styleUrls: ['./most-popular.component.css']
 })
 export class MostPopularComponent implements OnInit {
-
-  mostPopularVideos: Array<Snippet> = [];
   
-  constructor(private videoApiService: VideoApiService) { }
-
+  constructor(private store: Store<{ app: State  }>) { }
+  
   ngOnInit(): void {
-    this.videoApiService.getMostPopular().subscribe((items) => {
-      items.items?.forEach((item) => {
-        if(item.snippet)
-          this.mostPopularVideos.push(item.snippet);
-      })
-    });
+    this.store.dispatch(loadMostPopularVideo());
   }
 
 }

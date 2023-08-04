@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Snippet } from 'src/app/core/models/Snippet';
+import { Store } from '@ngrx/store';
+import { State } from 'src/app/core/store/app.reducer';
+import { detailsVideos } from 'src/app/core/store/app.selectors';
 
 @Component({
   selector: 'app-card-video',
@@ -8,10 +10,10 @@ import { Snippet } from 'src/app/core/models/Snippet';
 })
 export class CardVideoComponent implements OnInit {
 
-  @Input() snippets!: Array<Snippet>;
-  constructor() { }
+  mostPopularVideos$ = this.store.select(detailsVideos)
 
-  ngOnInit(): void {
-  }
+  constructor(private store: Store<{ app: State  }>) { }
+
+  ngOnInit(): void {}
 
 }

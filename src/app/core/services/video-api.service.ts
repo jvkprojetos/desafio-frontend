@@ -16,7 +16,7 @@ export class VideoApiService {
     const params = new HttpParams()
       .set('part', 'snippet')
       .set('chart', 'mostPopular')
-      .set('maxResults', '5')
+      .set('maxResults', '15')
       .set('regionCode', 'BR')
       .set('key', environment.apiKey);
 
