@@ -1,0 +1,7 @@
+<div class="content">
+    <div class="card" *ngFor="let snippet of snippets">
+        <img class="card-image " src="{{snippet.thumbnails.maxres.url}}"/>
+        <h1 class="card-title">{{snippet.title}}</h1>
+        <h1 class="card-channel">{{snippet.channelTitle}}</h1>
+    </div> 
+</div>
