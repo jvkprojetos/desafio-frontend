@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Snippet, Video } from 'src/app/core/models/video';
+import { Snippet } from "src/app/core/models/Snippet";
 import { VideoApiService } from 'src/app/core/services/video-api.service';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, catchError, map } from 'rxjs';
+import { Observable, catchError } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Video } from '../models/video';
 import { environment } from 'src/environments/environment';
@@ -16,7 +16,7 @@ export class VideoApiService {
     const params = new HttpParams()
       .set('part', 'snippet')
       .set('chart', 'mostPopular')
-      .set('maxResults', '50')
+      .set('maxResults', '5')
       .set('regionCode', 'BR')
       .set('key', environment.apiKey);
 
