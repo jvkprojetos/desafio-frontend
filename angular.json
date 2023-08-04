@@ -102,5 +102,7 @@
       }
     }
   },
-  "defaultProject": "desafio-frontend"
+  "cli": {
+    "analytics": "9d2e7fcb-e3f6-491e-bf62-bce83830b3c5"
+  }
 }
