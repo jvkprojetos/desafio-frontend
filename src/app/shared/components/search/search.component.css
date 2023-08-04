@@ -2,8 +2,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--blue);
-    padding: 1rem
 }
 
 .input {

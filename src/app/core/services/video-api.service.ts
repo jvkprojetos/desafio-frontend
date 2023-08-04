@@ -7,12 +7,13 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
+
 export class VideoApiService {
-  private apiUrl = `${environment.baseApiUrl}/videos`;
+  private apiUrl = `${environment.baseApiUrl}`;
 
   constructor(private http: HttpClient) {}
 
-  getMostPopular(): Observable<Video> {
+  getMostPopular(): Observable<Video> { 
     const params = new HttpParams()
       .set('part', 'snippet')
       .set('chart', 'mostPopular')
@@ -20,9 +21,24 @@ export class VideoApiService {
       .set('regionCode', 'BR')
       .set('key', environment.apiKey);
 
-    return this.http.get<Video>(this.apiUrl, { params })
+    return this.http.get<Video>(`${this.apiUrl}/videos`, { params })
       .pipe(catchError((error) => {
         console.error('Erro ao obter vídeos em alta:', error);
+        return [];
+      })
+    );
+  }
+
+  getFilter(value: string): Observable<Video> {
+    const params = new HttpParams()
+      .set('part', 'snippet')
+      .set('maxResults', '30')
+      .set('q', value)
+      .set('key', environment.apiKey);
+
+    return this.http.get<Video>(`${this.apiUrl}/search`, { params })
+      .pipe(catchError((error) => {
+        console.error('Erro ao obter vídeos filtrados:', error);
         return [];
       })
     );

@@ -1,6 +1,7 @@
 <div class="content">
     <div class="card" *ngFor="let video of mostPopularVideos$ | async">
-        <img class="card-image " src="{{video.snippet?.thumbnails?.maxres?.url}}"/>
+        <img *ngIf="video.snippet?.thumbnails?.maxres?.url != null" class="card-image " src="{{video.snippet?.thumbnails?.maxres?.url}}"/>
+        <img *ngIf="video.snippet?.thumbnails?.maxres?.url == null" class="card-image " src="{{video.snippet?.thumbnails?.high?.url}}"/>
         <h1 class="card-title">{{video.snippet?.title}}</h1>
         <h1 class="card-channel">{{video.snippet?.channelTitle}}</h1>
     </div> 

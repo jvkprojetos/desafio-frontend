@@ -1,4 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { State } from 'src/app/core/store/app.reducer';
+import { loadMostPopularVideo, loadSearchVideo } from 'src/app/core/store/app.actions';
 
 @Component({
   selector: 'app-search',
@@ -6,15 +9,13 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-
-  @Output() onClick = new EventEmitter<string>();
-  
-  constructor() { }
+    
+  constructor(private store: Store<{ app: State}> ) { }
 
   ngOnInit(): void {
   }
 
   searchClick(value: string) {   
-    this.onClick.emit(value);
+    this.store.dispatch(loadSearchVideo({ payload: value }));
   }
 }

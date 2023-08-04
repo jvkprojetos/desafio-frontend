@@ -1,4 +1,5 @@
 import { BaseQualityThumbnails } from "./BaseQualityThumbnails";
 
-export interface Maxres extends BaseQualityThumbnails{
+export interface High extends BaseQualityThumbnails {
+
 }
