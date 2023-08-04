@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { State } from 'src/app/core/store/app.reducer';
-import { loadMostPopularVideo, loadSearchVideo } from 'src/app/core/store/app.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -10,12 +8,12 @@ import { loadMostPopularVideo, loadSearchVideo } from 'src/app/core/store/app.ac
 })
 export class SearchComponent implements OnInit {
     
-  constructor(private store: Store<{ app: State}> ) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
   searchClick(value: string) {   
-    this.store.dispatch(loadSearchVideo({ payload: value }));
+    this.router.navigate(['results', value])
   }
 }
