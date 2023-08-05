@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LocalStorageService } from 'src/app/core/repositories/local-storage.service';
 
 @Component({
   selector: 'app-search',
@@ -12,25 +13,22 @@ export class SearchComponent implements OnInit {
   showHistory: boolean = false;
   list: Array<string> = [];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, 
+              private localStorageService: LocalStorageService) { }
 
   ngOnInit(): void {
-    this.list.push('teste1')
-    this.list.push('teste2')
-    this.list.push('teste3')
   }
 
   searchClick(value: string) {   
+    this.localStorageService.addHistory(value);
     this.router.navigate(['results', value])
   }
 
-  onClickInput(){
-    if(this.showHistory) {
-      this.showHistory = false;
-      return;
+  onKeyUpInput() {
+    if(this.list == null) {
+      this.list = this.localStorageService.getHistory();
     }
-
-    this.showHistory = true;
+    this.showHistory = !this.showHistory && this.list !== null;
   }
 
   onClickSelected(string: string){
