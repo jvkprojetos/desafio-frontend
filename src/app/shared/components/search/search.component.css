@@ -39,6 +39,10 @@
     cursor: pointer;
 }
 
+.search-historic p:hover {
+    color: var(--blue);
+}
+
 @media screen and (max-width: 735px) {
     .input {
         width: 380px;
