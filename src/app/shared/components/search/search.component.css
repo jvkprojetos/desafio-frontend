@@ -38,3 +38,23 @@
     margin-left: 10px;
     cursor: pointer;
 }
+
+@media screen and (max-width: 735px) {
+    .input {
+        width: 380px;
+    }
+    
+    .search-historic {
+        width: 380px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .input {
+        width: 280px;
+    }
+    
+    .search-historic {
+        width: 280px;
+    }
+}

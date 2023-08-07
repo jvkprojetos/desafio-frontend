@@ -3,6 +3,7 @@
     display: flex;    
     padding: 1rem 0;
     height: 5rem;
+    width: 100%;
 }
 
 .logo {
@@ -14,3 +15,14 @@
     margin-right: auto;
 }
 
+@media screen and (max-width: 630px) {
+    .header {
+        display: grid;
+        height: 10rem;
+    }
+
+    .logo {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

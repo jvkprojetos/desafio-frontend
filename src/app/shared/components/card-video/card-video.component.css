@@ -36,3 +36,37 @@
 .card-channel {    
     font-weight: 400;
 }
+
+@media screen and (max-width: 735px) {
+    .card {
+        height: 200px;
+        width: 160px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .card-image {
+        height: 100px;
+        width: 130px;
+    }
+    
+    .card-title, .card-channel {
+        width: 130px;
+    }
+}
+
+@media screen and (max-width: 1450px) {
+    .card {
+        height: 200px;
+        width: 240px;
+    }
+    
+    .card-image {
+        height: 120px;
+        width: 220px;
+    }
+    
+    .card-title, .card-channel {
+        width: 220px;
+    }
+}
