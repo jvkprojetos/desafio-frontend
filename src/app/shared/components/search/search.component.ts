@@ -31,7 +31,9 @@ export class SearchComponent implements OnInit {
   }
 
   focusExecute() {
-    this.showHistoric = !this.showHistoric && this.historicData$ !== null;
+    this.historicData$.subscribe(data =>{
+      this.showHistoric = !this.showHistoric && data.length > 0
+    });
   }
 
   selectedItemHistoricExecute(itemHistoricSelected: Historic) {
