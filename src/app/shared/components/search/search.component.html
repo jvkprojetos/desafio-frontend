@@ -1,6 +1,6 @@
 <div>
     <div class="container">
-        <input #filter type="text" class="input" placeholder="Pesquisar" (keyup)="onKeyUpInput()" value="{{filterText}}"/>
+        <input #filter type="text" class="input" placeholder="Pesquisar" (click)="onClick()" (blur)="blur()" value="{{filterText}}"/>
         <button class="button material-symbols-outlined icon" (click)="searchClick(filter.value)">Search</button>
     </div>
     <section *ngIf="showHistory" class="search-history">

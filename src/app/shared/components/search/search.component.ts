@@ -8,30 +8,33 @@ import { LocalStorageService } from 'src/app/core/repositories/local-storage.ser
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  
+
   filterText: string = ''
   showHistory: boolean = false;
   list: Array<string> = [];
 
-  constructor(private router: Router, 
+  constructor(private router: Router,
               private localStorageService: LocalStorageService) { }
 
   ngOnInit(): void {
   }
 
-  searchClick(value: string) {   
+  searchClick(value: string) {
     this.localStorageService.addHistory(value);
     this.router.navigate(['results', value])
   }
 
-  onKeyUpInput() {
-    if(this.list == null) {
-      this.list = this.localStorageService.getHistory();
-    }
+  onClick() {
+    console.log('ok')
+    this.list = this.localStorageService.getHistory().slice(0, 5);
     this.showHistory = !this.showHistory && this.list !== null;
   }
 
-  onClickSelected(string: string){
+  blur() {
+    this.showHistory = false;
+  }
+
+  onClickSelected(string: string) {
     this.filterText = string;
     this.showHistory = false;
   }
