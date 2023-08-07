@@ -1,9 +1,9 @@
 <div>
     <div class="container">
-        <input #filter type="text" class="input" placeholder="Pesquisar" (click)="onClick()" (blur)="blur()" value="{{filterText}}"/>
-        <button class="button material-symbols-outlined icon" (click)="searchClick(filter.value)">Search</button>
+        <input #filter type="text" class="input" placeholder="Pesquisar" (focus)="focusExecute()" value="{{filterText}}"/>
+        <button class="button material-symbols-outlined icon" (click)="searchExecute(filter.value)">Search</button>
     </div>
-    <section *ngIf="showHistory" class="search-history">
-        <p *ngFor="let item of list" (click)="onClickSelected(item)">{{item}}</p>        
+    <section *ngIf="showHistoric" class="search-historic">
+        <p *ngFor="let historic of historicData" (click)="selectedItemHistoricExecute(historic)">{{historic.value}}</p>        
     </section>
 </div>

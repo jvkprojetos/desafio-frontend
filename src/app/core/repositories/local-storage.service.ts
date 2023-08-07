@@ -1,24 +1,35 @@
 import { Injectable } from '@angular/core';
-
+import { Historic  } from "../models/History";
 @Injectable({
   providedIn: 'root'
 })
 export class LocalStorageService {
 
   storage: Storage = window.localStorage;
-  historys: Array<string> = [];
+  historicData: Array<Historic> = [];
 
   constructor() {
   }
 
-  addHistory(value: string) {
-    this.historys = this.getHistory() || [];
-    this.historys.push(value);
-    this.storage.setItem('history', JSON.stringify(this.historys));
+  addHistoric(value: string) {
+    const history: Historic = {
+      value: value,
+      date: new Date()
+    };
+
+    this.historicData = this.getHistoric() || [];
+
+    let exists = this.historicData.filter(h => h.value === value);
+    if(exists.length > 0) {
+      return;
+    }
+
+    this.historicData.push(history);
+    this.storage.setItem('historic', JSON.stringify(this.historicData));
   }
 
-  getHistory() : string[] {
-    const json = this.storage.getItem('history');
-    return json === null ? [] : JSON.parse(json) as Array<string>;
+  getHistoric() : Historic[] {
+    const json = this.storage.getItem('historic');
+    return json === null ? [] : JSON.parse(json) as Array<Historic>;
   }
 }

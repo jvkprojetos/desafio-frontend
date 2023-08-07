@@ -22,7 +22,7 @@
     cursor: pointer;
 }
 
-.search-history {
+.search-historic {
     position: absolute;
     width: 480px;
     min-height: 45px;
@@ -30,9 +30,11 @@
     background-color: var(--white);
     border-radius: 10px;
     border: 1px solid var(--black);
+    scroll-behavior: smooth;
 }
 
-.search-history p {
+.search-historic p {
     margin: 10px 0;
     margin-left: 10px;
+    cursor: pointer;
 }
