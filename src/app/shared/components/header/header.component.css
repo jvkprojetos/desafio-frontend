@@ -8,6 +8,11 @@
 
 .logo {
     margin-left: 5rem;
+    cursor: pointer;
+}
+
+a {
+    cursor: pointer;
 }
 
 .search {
