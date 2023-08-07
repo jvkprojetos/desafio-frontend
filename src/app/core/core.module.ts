@@ -7,6 +7,7 @@ import { appReducer } from './store/app.reducer';
 import { VideoEffectService } from './store/video.effect.service';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
+import { HistoricEffectService } from './store/historic.effect.service';
 
 @NgModule({
   declarations: [],
@@ -16,7 +17,8 @@ import { environment } from 'src/environments/environment';
     StoreModule.forRoot({app: appReducer}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production}),
     EffectsModule.forRoot([
-      VideoEffectService
+      VideoEffectService,
+      HistoricEffectService
     ])
   ]
 })

@@ -4,6 +4,6 @@
         <button class="button material-symbols-outlined icon" (click)="searchExecute(filter.value)">Search</button>
     </div>
     <section *ngIf="showHistoric" class="search-historic">
-        <p *ngFor="let historic of historicData" (click)="selectedItemHistoricExecute(historic)">{{historic.value}}</p>        
+        <p *ngFor="let historic of historicData$ | async" (click)="selectedItemHistoricExecute(historic)">{{historic.value}}</p>        
     </section>
 </div>

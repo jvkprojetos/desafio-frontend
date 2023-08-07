@@ -5,7 +5,6 @@ import { State, } from './app.reducer';
 import { VideoApiService } from '../services/video-api.service';
 import { Store } from '@ngrx/store';
 import { loadMostPopularVideo, loadSearchVideo, setMostVideo, successloadMostPopularVideo } from './app.actions';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -31,5 +30,5 @@ export class VideoEffectService {
       tap(video => this.store.dispatch(setMostVideo({ payload: video }))),
       map(() => successloadMostPopularVideo())
     )
-  )
+  )  
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Historic  } from "../models/History";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -28,7 +29,7 @@ export class LocalStorageService {
     this.storage.setItem('historic', JSON.stringify(this.historicData));
   }
 
-  getHistoric() : Historic[] {
+  getHistoric() : Array<Historic> {
     const json = this.storage.getItem('historic');
     return json === null ? [] : JSON.parse(json) as Array<Historic>;
   }

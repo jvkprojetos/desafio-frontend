@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LocalStorageService } from 'src/app/core/repositories/local-storage.service';
 import { Historic } from 'src/app/core/models/History';
+import { Store } from '@ngrx/store';
+import { State } from 'src/app/core/store/app.reducer';
+import { loadHistoricData, setHistoric } from 'src/app/core/store/app.actions';
+import { latestTop10InHistory } from 'src/app/core/store/app.selectors';
 
 @Component({
   selector: 'app-search',
@@ -12,27 +15,23 @@ export class SearchComponent implements OnInit {
 
   filterText: string = ''
   showHistoric: boolean = false;
-  historicData: Array<Historic> = [];
+  historicData$ = this.store.select(latestTop10InHistory);
 
   constructor(private router: Router,
-              private localStorageService: LocalStorageService) { }
+              private store: Store<{ app: State}>) { }
 
   ngOnInit(): void {
+    this.store.dispatch(loadHistoricData())
   }
 
   searchExecute(value: string) {
     this.showHistoric = false;
-    this.localStorageService.addHistoric(value);
+    this.store.dispatch(setHistoric({ payload: value }));
     this.router.navigate(['results', value])
   }
 
   focusExecute() {
-    console.log(this.showHistoric)
-    this.historicData = this.localStorageService.getHistoric()
-                    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-                    .slice(0, 10);
-    console.log(this.historicData)
-    this.showHistoric = !this.showHistoric && this.historicData !== null;
+    this.showHistoric = !this.showHistoric && this.historicData$ !== null;
   }
 
   selectedItemHistoricExecute(itemHistoricSelected: Historic) {

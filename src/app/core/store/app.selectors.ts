@@ -9,3 +9,17 @@ export const detailsVideos = createSelector(
         return state.video?.items
     }
 )
+
+export const historyDataOrderByDate = createSelector(
+    selectApp,
+    (state) => {
+        return state.historicData.slice().sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    }
+)
+
+export const latestTop10InHistory = createSelector(
+    historyDataOrderByDate,
+    (state) => {
+        return state.slice(0, 10)
+    }
+)
